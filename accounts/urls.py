@@ -10,6 +10,8 @@ urlpatterns = [
     ), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('register/', views.register, name='register'),
+    path('change_password/', views.change_password, name='change_password'),
+    path('forgot_password/', views.public_password_reset, name='forgot_password'),
     path('', views.dashboard, name='dashboard'),
     path('api/cashflow-data/', views.get_cashflow_data, name='get_cashflow_data'),
 ]

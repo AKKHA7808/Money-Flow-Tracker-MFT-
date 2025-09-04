@@ -145,3 +145,6 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/login/'
 
 SESSION_COOKIE_AGE = 1209600
+
+# Email backend for development (shows emails in terminal)
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

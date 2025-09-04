@@ -6,6 +6,8 @@ from datetime import datetime, timedelta
 from django.utils import timezone
 from django.db.models import Sum, Count, Q
 from .forms import CustomUserCreationForm
+from .change_password_view import change_password
+from .public_password_reset_view import public_password_reset
 
 def register(request):
     if request.method == 'POST':
