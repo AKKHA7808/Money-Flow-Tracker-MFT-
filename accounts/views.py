@@ -15,7 +15,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            messages.success(request, 'Registration successful! Welcome to CashFlow Tracker.')
+            messages.success(request, 'Registration successful! Welcome to Money Flow Tracker ( MFT ).')
             return redirect('dashboard')
     else:
         form = CustomUserCreationForm()
