@@ -33,7 +33,7 @@ def dashboard(request):
     current_year = today.year
     
     # Get user's transactions
-    transactions = Transaction.objects.filter(user=request.user)
+    transactions = Transaction.objects.filter(user=request.user).select_related('category')
     
     # Calculate total income and expenses
     totals = transactions.aggregate(
@@ -146,7 +146,7 @@ def get_cashflow_data(request):
         year = timezone.now().year
     
     today = timezone.now().date()
-    transactions = Transaction.objects.filter(user=request.user)
+    transactions = Transaction.objects.filter(user=request.user).select_related('category')
     
     labels = []
     income_data = []

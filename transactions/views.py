@@ -12,7 +12,7 @@ from categories.models import Category
 
 @login_required
 def transaction_list(request):
-    transactions = Transaction.objects.filter(user=request.user)
+    transactions = Transaction.objects.filter(user=request.user).select_related('category')
     filter_form = TransactionFilterForm(request.GET, user=request.user)
     
     # Apply filters

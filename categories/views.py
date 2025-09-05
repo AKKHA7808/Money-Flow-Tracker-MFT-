@@ -9,7 +9,7 @@ from .forms import CategoryForm, CategoryFilterForm
 
 @login_required
 def category_list(request):
-    categories = Category.objects.filter(user=request.user)
+    categories = Category.objects.filter(user=request.user).select_related('user')
     filter_form = CategoryFilterForm(request.GET)
     
     # Apply filters
@@ -97,7 +97,7 @@ def category_delete(request, pk):
 def category_api_list(request):
     """API endpoint for getting categories (useful for AJAX calls)"""
     category_type = request.GET.get('type', '')
-    categories = Category.objects.filter(user=request.user)
+    categories = Category.objects.filter(user=request.user).select_related('user')
     
     if category_type in ['income', 'expense']:
         categories = categories.filter(category_type=category_type)
